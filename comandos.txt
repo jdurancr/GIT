@@ -1,0 +1,40 @@
+Ver Version
+git --version
+Registrar
+git config --global user.name "José Durán"
+git config --global user.mail "jdurancr@hotmail.com"
+
+Crear depositorio
+
+
+Clonar repositorio existente
+git clone identificador_del_repositorio_a_Clonar Carpeta_de_destino: Clonar repositorio
+
+
+Guardad un archivo en repositorio
+git add NOMBRE DEL ARCHINO Y EXTENCION
+
+hace un commit
+git commit -m "mensaje del commit" 
+
+
+ver historial de cambios
+git log
+
+
+compara entre commit para ver los cambios
+git diff commit_id Commit_id
+
+Volver a la version una version anterior
+cheatsheet fit checkout commit_id
+
+etiquetas para las versiones importantes
+git tag -a Nombre_de_la_Etiqueta -m
+
+Crear una rama o version paralela
+git branch Nombre_de_la_rama
+
+unir rama
+git merge rama
+
+git branch 
