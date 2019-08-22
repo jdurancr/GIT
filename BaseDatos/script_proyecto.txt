@@ -1,0 +1,8 @@
+insertar promcion
+INSERT INTO `mydb`.`promociones` (`id`, `nombre_promo`, `hotel`, `direccion_hotel`, `nombre_destino`, `calificacion_destino`, `precio`, `fecha_inicio`, `fecha_fin`, `Moneda`, `imagen_hotel`, `Imagen_destino`) VALUES ('1', 'Machu Picchu', 'El Macho Pichu', 'Peru', 'Peru', '9', '500', '2019/01/01', '2019/10/10', 'Dolar', 'https://images.app.goo.gl/p4LVf3vu96WXioN17', 'https://images.app.goo.gl/p4LVf3vu96WXioN17');
+
+Actualizar 
+UPDATE `mydb`.`promociones` SET `calificacion_destino` = '10' WHERE (`id` = '1');
+
+Borrar registros menos al 1 enero del 2018
+DELETE FROM `mydb`.`promociones` WHERE (`fecha_fin` < '2018/01/01');

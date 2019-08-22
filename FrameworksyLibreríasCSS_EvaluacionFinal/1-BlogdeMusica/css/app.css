@@ -1,0 +1,9 @@
+
+.imglogo {
+  text-align: left;
+}
+.socialmedia{
+  text-align: right;
+  display: inline-table;
+  margin-top: 10%;
+}
