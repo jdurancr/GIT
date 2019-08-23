@@ -1,9 +1,43 @@
+html{
+  width: 90%;
+  margin:0 auto;
+  height: 100%;
+  background-color: red;
+}
+.titulo{
+  text-align: center;
 
+}
+header{
+  margin-bottom: 10px;
+}
 .imglogo {
   text-align: left;
+  height: 100%;
 }
 .socialmedia{
   text-align: right;
   display: inline-table;
   margin-top: 10%;
+}
+
+.active{
+  background-color: yellow;
+}
+
+.navegador{
+  text-align:justify;
+  width: 100%;
+}
+
+.miimagen{
+  width: 100%;
+  margin-top: 25%;
+}
+/* WARNING:  img[class^='user']{
+  width: 8%;
+  }*/
+.user{
+  width: 40px;
+  height: 40px;
 }
