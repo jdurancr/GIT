@@ -4,10 +4,9 @@ html{
   height: 100%;
   background-color: red;
 }
-.titulo{
+/* WARNING: .titulo{
   text-align: center;
-
-}
+}  */
 header{
   margin-bottom: 10px;
 }
@@ -20,9 +19,9 @@ header{
   display: inline-table;
   margin-top: 10%;
 }
+#menu{
+background: black;
 
-.active{
-  background-color: yellow;
 }
 
 .navegador{
@@ -34,10 +33,34 @@ header{
   width: 100%;
   margin-top: 25%;
 }
-/* WARNING:  img[class^='user']{
+.nav{
+  background-color: orange;
+  border-radius: 10px;
+}
+
+img[class^='estiloimg']{
   width: 8%;
-  }*/
-.user{
-  width: 40px;
-  height: 40px;
+}
+.estilopropio{
+  width: 100%;
+  margin-top: 25%;
+}
+
+table{
+  cursor: pointer;
+}
+
+p {
+  text-align: justify;
+}
+/*******************************************************************************/
+@media all and (max-width: 900px) {
+.redessociales{
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+}
+.col-xs-3{
+  margin-top: 0%;
+}
 }
