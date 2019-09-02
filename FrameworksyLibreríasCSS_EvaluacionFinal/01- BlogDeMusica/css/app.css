@@ -4,44 +4,34 @@ html{
   height: 100%;
   background-color: red;
 }
-/* WARNING: .titulo{
-  text-align: center;
-}  */
+
 header{
   margin-bottom: 10px;
 }
-.imglogo {
-  text-align: left;
-  height: 100%;
-}
-.socialmedia{
+.redessociales{
   text-align: right;
   display: inline-table;
   margin-top: 10%;
 }
-#menu{
-background: black;
 
+.imaglogo{
+  width: 50%;
 }
 
-.navegador{
-  text-align:justify;
-  width: 100%;
-}
-
-.miimagen{
-  width: 100%;
-  margin-top: 25%;
-}
 .nav{
   background-color: orange;
   border-radius: 10px;
+  color: Black;
+}
+li {
+  color: red;
+  text-decoration-color: red;
 }
 
 img[class^='estiloimg']{
   width: 8%;
 }
-.estilopropio{
+.img_bandas{
   width: 100%;
   margin-top: 25%;
 }
