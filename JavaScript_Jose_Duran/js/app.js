@@ -1,8 +1,7 @@
-
 var calculadora = {
 
 	visor: document.getElementById("display"),
-	valorVisor: "0",
+	ValorEnPantalla: "0",
 	operacion: "",
 	primerValor: 0,
 	segundoValor: 0,
@@ -11,30 +10,28 @@ var calculadora = {
 	auxTeclaIgual: false,
 
 	init: (function(){
-		this.asignarEventosFormatoBotones(".tecla");
+		this.eventoBntTecla(".tecla");
 		this.asignarEventosaFuncion();
 	}),
 
-//Evento - botones
-	asignarEventosFormatoBotones: function(selector){
+//Eventos mouse - sobre y salida
+	eventoBntTecla: function(selector){
 		var x = document.querySelectorAll(selector);
 		for (var i = 0; i<x.length;i++) {
-			x[i].onmouseover = this.eventoAchicaBoton;
-			x[i].onmouseleave = this.eventoVuelveBoton;
+			x[i].onmouseover = this.EventoOverBtn;
+			x[i].onmouseleave = this.EventoLeaveBtn;
 		};
 	},
 
-	eventoAchicaBoton: function(event){
-		calculadora.AchicaBoton(event.target);
+	EventoOverBtn: function(event){
+		calculadora.achicaBoton(event.target);
 	},
 
-	eventoVuelveBoton: function(event){
-		calculadora.AumentaBoton(event.target);
+	EventoLeaveBtn: function(event){
+		calculadora.agrandaBoton(event.target);
 	},
 
-	//Formato de botones
-
-	AchicaBoton: function(elemento){
+	achicaBoton: function(elemento){
 		var x = elemento.id;
 		if (x=="1" || x=="2" || x=="3" || x=="0" || x=="igual" || x=="punto" ) {
 			elemento.style.width = "28%";
@@ -48,16 +45,16 @@ var calculadora = {
 		}
 	},
 
-	AumentaBoton: function(elemento){
+	agrandaBoton: function(elemento){
 		var x = elemento.id;
 		if (x=="1" || x=="2" || x=="3" || x=="0" || x=="igual" || x=="punto" ) {
-			elemento.style.width = "29%";
+			elemento.style.width = "30%";
 			elemento.style.height = "62.91px";
 		} else if(x=="mas") {
 			elemento.style.width = "90%";
 			elemento.style.height = "100%";
 		} else {
-		elemento.style.width = "22%";
+		elemento.style.width = "23%";
 		elemento.style.height = "62.91px";
 		}
 	},
@@ -73,7 +70,7 @@ var calculadora = {
 		document.getElementById("7").addEventListener("click", function() {calculadora.ingresoNumero("7");});
 		document.getElementById("8").addEventListener("click", function() {calculadora.ingresoNumero("8");});
 		document.getElementById("9").addEventListener("click", function() {calculadora.ingresoNumero("9");});
-		document.getElementById("on").addEventListener("click", function() {calculadora.borrarVisor();});
+		document.getElementById("on").addEventListener("click", function() {calculadora.linpiarPantalla();});
 		document.getElementById("sign").addEventListener("click", function() {calculadora.cambiarSigno();});
 		document.getElementById("punto").addEventListener("click", function() {calculadora.ingresoDecimal();});
 		document.getElementById("igual").addEventListener("click", function() {calculadora.verResultado();});
@@ -84,9 +81,9 @@ var calculadora = {
 		document.getElementById("mas").addEventListener("click", function() {calculadora.ingresoOperacion("+");});
 	},
 
-	borrarVisor: function(){
+	linpiarPantalla: function(){
 
-	    this.valorVisor = "0";
+	    this.ValorEnPantalla = "0";
 		this.operacion = "";
 		this.primerValor = 0;
 		this.segundoValor = 0;
@@ -94,81 +91,81 @@ var calculadora = {
 		this.Operación = "";
 		this.auxTeclaIgual = false;
 		this.ultimoValor = 0;
-		this.updateVisor();
+		this.actalizaPantalla();
 	},
 
 	cambiarSigno: function(){
-		if (this.valorVisor !="0") {
+		if (this.ValorEnPantalla !="0") {
 			var aux;
-			if (this.valorVisor.charAt(0)=="-") {
-				aux = this.valorVisor.slice(1);
+			if (this.ValorEnPantalla.charAt(0)=="-") {
+				aux = this.ValorEnPantalla.slice(1);
 			}	else {
-				aux = "-" + this.valorVisor;
+				aux = "-" + this.ValorEnPantalla;
 			}
-		this.valorVisor = "";
-		this.valorVisor = aux;
-		this.updateVisor();
+		this.ValorEnPantalla = "";
+		this.ValorEnPantalla = aux;
+		this.actalizaPantalla();
 		}
 	},
 
 	ingresoDecimal: function(){
-		if (this.valorVisor.indexOf(".")== -1) {
-			if (this.valorVisor == ""){
-				this.valorVisor = this.valorVisor + "0.";
+		if (this.ValorEnPantalla.indexOf(".")== -1) {
+			if (this.ValorEnPantalla == ""){
+				this.ValorEnPantalla = this.ValorEnPantalla + "0.";
 			} else {
-				this.valorVisor = this.valorVisor + ".";
+				this.ValorEnPantalla = this.ValorEnPantalla + ".";
 			}
-			this.updateVisor();
+			this.actalizaPantalla();
 		}
 	},
 
 	ingresoNumero: function(valor){
-		if (this.valorVisor.length < 8) {
+		if (this.ValorEnPantalla.length < 8) {
 
-			if (this.valorVisor=="0") {
-				this.valorVisor = "";
-				this.valorVisor = this.valorVisor + valor;
+			if (this.ValorEnPantalla=="0") {
+				this.ValorEnPantalla = "";
+				this.ValorEnPantalla = this.ValorEnPantalla + valor;
 			} else {
-				this.valorVisor = this.valorVisor + valor;
+				this.ValorEnPantalla = this.ValorEnPantalla + valor;
 			}
-		this.updateVisor();
+		this.actalizaPantalla();
 		}
 	},
 
 	ingresoOperacion: function(oper){
-		this.primerValor = parseFloat(this.valorVisor);
-		this.valorVisor = "";
+		this.primerValor = parseFloat(this.ValorEnPantalla);
+		this.ValorEnPantalla = "";
 		this.operacion = oper;
 		this.auxTeclaIgual = false;
-		this.updateVisor();
+		this.actalizaPantalla();
 	},
 
 	verResultado: function(){
 
 		if(!this.auxTeclaIgual){
-			this.segundoValor = parseFloat(this.valorVisor);
+			this.segundoValor = parseFloat(this.ValorEnPantalla);
 			this.ultimoValor = this.segundoValor;
-			this.realizarOperacion(this.primerValor, this.segundoValor, this.operacion);
+			this.Operaciones(this.primerValor, this.segundoValor, this.operacion);
 
 		} else {
-			this.realizarOperacion(this.primerValor, this.ultimoValor, this.operacion);
+			this.Operaciones(this.primerValor, this.ultimoValor, this.operacion);
 		}
 
 		this.primerValor = this.resultado;
-		this.valorVisor = "";
+		this.ValorEnPantalla = "";
 
 		if (this.resultado.toString().length < 9){
-			this.valorVisor = this.resultado.toString();
+			this.ValorEnPantalla = this.resultado.toString();
 		} else {
-			this.valorVisor = this.resultado.toString().slice(0,8) + "...";
+			this.ValorEnPantalla = this.resultado.toString().slice(0,8) + "...";
 		}
 
 		this.auxTeclaIgual = true;
-		this.updateVisor();
+		this.actalizaPantalla();
 
 	},
 
-	realizarOperacion: function(primerValor, segundoValor, operacion){
+	Operaciones: function(primerValor, segundoValor, operacion){
 		switch(operacion){
 			case "+":
 				this.resultado = eval(primerValor + segundoValor);
@@ -187,8 +184,8 @@ var calculadora = {
 		}
 	},
 
-	updateVisor: function(){
-		this.visor.innerHTML = this.valorVisor;
+	actalizaPantalla: function(){
+		this.visor.innerHTML = this.ValorEnPantalla;
 	}
 
 };
